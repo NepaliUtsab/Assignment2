@@ -1,0 +1,36 @@
+{
+  "name": "musiccollab",
+  "version": "1.0.0",
+  "description": "Backend api for music collab website",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node -e js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NepaliUtsab/Assignment2.git"
+  },
+  "author": "Utsab Malakar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.0",
+    "mongodb": "^3.5.3",
+    "mongoose": "^5.9.2",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.2",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "bugs": {
+    "url": "https://github.com/NepaliUtsab/Assignment2/issues"
+  },
+  "homepage": "https://github.com/NepaliUtsab/Assignment2#readme"
+}
