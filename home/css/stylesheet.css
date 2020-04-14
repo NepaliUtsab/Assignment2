@@ -1,0 +1,85 @@
+
+body{
+    font-family: 'Muli', sans-serif !important;
+    padding-top: 5.5rem;
+}
+.navbar{
+    margin-bottom: 0.4rem;
+}
+
+.banner{
+    clear: both;
+}
+
+.carousel-item {
+    height: 400px !important;
+}
+
+.nav-item > a {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.div-title{
+    font-size: 18px;
+}
+
+/* About page styles */
+.about-section > p {
+    font-size: 20px !important;
+}
+
+.fit-image{
+    width: 100%;
+}
+
+/* Pricing page */
+
+.price-card-header{
+    background-color: orange !important;
+}
+
+.price-card-body{
+    background-color: black !important;
+}
+
+.card-body > ul > li {
+    list-style-type: none;
+    font-size: 20px;
+}
+
+.card-body > ul > li:before {
+    content: '-';
+    margin-left: -20px;
+    margin-right: 10px;
+}
+
+/* Collab page */
+.nav-pills > .nav-item > a {
+    color: black;
+}
+
+.nav-pills > .nav-item {
+    background-color: white;
+}
+
+.nav-pills > .nav-item > a.active {
+    color: gray;
+    background-color: white;
+}
+
+
+/* Create Collab Page */
+.btn-group > .btn {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    border-radius: 0;
+}
+
+.btn-group > .btn.active {
+    background-color: skyblue;
+    color: white;
+    background-image: radial-gradient(circle, white, skyblue, blue);
+    border-radius: 0;
+}

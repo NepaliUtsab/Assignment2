@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: black;">
+        <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="logo" style="width: 60px; height: 60px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavigationBar"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="NavigationBar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="collabs.html">Collabs</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <!-- <li class="nav-item mr-4" id="navbar-login">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item" id="navbar-register">
+                    <a class="btn" href="register.html" style="background-color: orange; color: white;">Sign Up</a>
+                </li> -->
+                <li class="nav-item mr-4" id="navbar-mycollab">
+                    <a class="btn" style="background-color: orange; color: white;" href="my-collab.html">Start New
+                        Collab</a>
+                </li>
+                <li class="nav-item" id="navbar-profile-img">
+                    <a href="profile.html"><img width="40px" height="40px" class="rounded-circle"
+                            src="images/dev_pic.jpg" alt=""></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container my-4">
+        <div class="row text-center">
+            <div class="col">
+                <h2>Create New Collaboration</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5" style="min-height: 400px;">
+        <div class="row">
+            <div class="col">
+                <div class="col">
+                    <form class="needs-validation" id="login-form" action="#" novalidate>
+                        <div class="form-row mt-5" style="max-width: 50%;">
+                            <div class="col">
+                                <input type="text" class="form-control" id="myTitle" placeholder="Enter a title"
+                                    autocomplete="off" required>
+
+                            </div>
+                        </div>
+                        <div class="form-row mt-5" style="max-width: 50%;">
+                            <div class="col">
+                                <input type="text" class="form-control" id="myDesc" placeholder="Enter a description"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-row mt-5" style="max-width: 50%;">
+                            <div class="col">
+                                <label for="genre">Choose a Genre</label><br>
+                                <div class="btn-group btn-group-toggle" id="genre" data-toggle="buttons">
+                                    <label class="btn mx-3 active">
+                                        <input type="radio" name="genre" id="rock" autocomplete="off" value="rock" checked>Rock
+                                    </label>
+                                    <label class="btn mx-3">
+                                        <input type="radio" name="genre" id="blues" value="rock" autocomplete="off">Blues
+                                    </label>
+                                    <label class="btn mx-3">
+                                        <input type="radio" name="genre" id="jazz" value="rock" autocomplete="off">Jazz
+                                    </label>
+                                    <label class="btn mx-3">
+                                        <input type="radio" name="genre" id="pop" value="rock" autocomplete="off">Pop
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mt-5" style="max-width: 50%;">
+                            <div class="col">
+                                <label for="radioCollab">Collaboration Type</label><br>
+                                <div class="form-check form-check-inline" id="radioCollab">
+                                    <input class="form-check-input" type="radio" name="CollabType" id="radioPrivate" value="Private" checked>
+                                    <label class="form-check-label" for="radioPrivate">
+                                      Private
+                                    </label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="CollabType" id="radioPublic" value="Public">
+                                    <label class="form-check-label" for="radioPublic">
+                                      Public
+                                    </label>
+                                  </div>
+                            </div>
+                        </div>
+                        <button class="btn mt-5 text-white" type="button" onclick="saveCollab()"
+                            style="min-width: 200px; background-color: orange;">Save</button>
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="text-muted bg-dark py-2 mt-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 my-2">
+                    <p>@Developed by Utsab Malakar</p>
+                    <p>ICT for small business Student</p>
+                    <p>Email: utsabmalakar57@gmail.com</p>
+                </div>
+                <div class="col-md-6">
+                    <a href="about.html">
+                        <p class="text-right my-2 text-muted">About Us</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script/script.js"></script>
+</body>
+
+</html>
