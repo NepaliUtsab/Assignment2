@@ -10,7 +10,23 @@ var UserProfile = new ProfileSchema({
     password: {
         type: String,
         required: 'Enter valid password.'
-    }
+    },
+    firstName: {
+        type: String
+    },
+    lastName: {
+        type: String
+    },
+    addressLine: {
+        type: String
+    },
+    city: {
+        type: String
+    },
+    country: {
+        type: String
+    },
+
 });
 
 module.exports = mongoose.model('UserProfile', UserProfile)

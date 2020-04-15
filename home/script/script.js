@@ -118,25 +118,6 @@ function loginUser() {
   }
 }
 
-var app = angular.module('loginPage', []);
-app.controller('loginFormCtrl', function ($scope, $http) {
-  $scope.loginUserA = function () {
-    if(loginUser()){
-    $http.post('/login_user', $scope.user)
-      .then(function (response) {
-        console.log(response);
-        if(response.status == 200){
-          sessionStorage.setItem("current-user", JSON.stringify(response.data.data));
-          window.open("profile.html", "_self");
-        }else{
-          alert.show(response.data.message);
-        }
-        
-      });
-    }
-  };
-});
-
 // Register User function
 function registerUser() {
   var registerEmail = document.querySelector("#register-form #registerEmail");
@@ -161,7 +142,9 @@ function registerUser() {
     };
     sessionStorage.setItem("current-user", JSON.stringify(userMap));
     console.log(userMap["email"]);
-    window.open("profile.html", "_self");
+    return true;
+  } else {
+    return false;
   }
 }
 
