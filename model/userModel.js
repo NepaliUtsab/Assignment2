@@ -26,6 +26,10 @@ var UserProfile = new ProfileSchema({
     country: {
         type: String
     },
+    collabs: [{
+        type: ProfileSchema.Types.ObjectId,
+        ref: 'collabs'
+    }]
 
 });
 

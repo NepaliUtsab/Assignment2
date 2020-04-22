@@ -4,6 +4,11 @@ import {
     registerUser
 } from '../controller/login_register_controller'
 
+import {
+    getCollabs,
+    saveCollab
+} from '../controller/collabs_controller'
+
 const route = (app) => {
     app.route('/login_user')
     .post(loginUser)
@@ -14,6 +19,12 @@ const route = (app) => {
 
     app.route('/register_user')
     .post(registerUser)
+
+    app.route('/save_collab')
+    .post(saveCollab)
+
+    app.route('/get_collab')
+    .get(getCollabs)
     
 }
 

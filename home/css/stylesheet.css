@@ -7,6 +7,18 @@ body{
     margin-bottom: 0.4rem;
 }
 
+.navbar-nav li a{
+    color: white !important;
+}
+
+.navbar-nav > .active > a{
+    color: orange !important;
+}
+
+footer{
+    background-color: black !important;
+}
+
 .banner{
     clear: both;
 }
