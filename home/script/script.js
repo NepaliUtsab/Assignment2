@@ -213,18 +213,11 @@ function getRecommended(pills_id) {
 
 //Save my collab
 function saveCollab() {
-  //for now saving the collabs in the session storage
-  var title = document.querySelector("#myTitle").value;
-  var description = document.querySelector("#myDesc").value;
-  var genre = document.querySelector('input[name="genre"]:checked').value;
-  var collabType = document.querySelector('input[name="CollabType"]:checked').value;
-
-  var collabMap = {
-    "title": title,
-    "description": description,
-    "genre": genre,
-    "collabType": collabType
-  };
-  sessionStorage.setItem('MyCollabs', JSON.stringify(collabMap));
-  window.open('profile.html', '_self');
+  var form = document.querySelector("#create-collab-form");
+  form.classList.add("was-validated");
+  if(form.checkValidity() == true){
+    return true;
+  }else{ 
+    return false;
+  }
 }

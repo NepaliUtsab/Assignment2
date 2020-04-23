@@ -52,8 +52,10 @@ export const getUser = (req, res) => {
 }
 
 export const registerUser = (req, res) => {
-    let newUser = userModel(req)
+    console.log(req);
+    let newUser = userModel(req.body)
     var responseBody = responseFormat;
+    console.log(newUser);
     userModel.findOne({ email: newUser.email }, (err, user) => {
         if (err) {
             responseBody.status = 401;
@@ -65,6 +67,7 @@ export const registerUser = (req, res) => {
                     res.send(err)
                 }
                 let responseBody = responseFormat;
+                responseBody.status = 200;
                 responseBody.message = 'Successfully created';
                 responseBody.data = new_user;
                 res.json(responseBody);

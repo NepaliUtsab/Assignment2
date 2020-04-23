@@ -63,7 +63,7 @@ export const saveCollab = (req, res) => {
             res.json(responseBody);
         }else{
             console.log(collab);
-            responseBody.message = "Collabs retrieved successfully";
+            responseBody.message = "Collabs Saved successfully";
             responseBody.data = collab;
             userModel.findById((new_collab.author),(err, user) => {
                 if(err){

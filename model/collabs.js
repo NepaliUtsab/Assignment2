@@ -14,6 +14,9 @@ var Collab = new CollabSchema({
     genre: {
         type: String
     },
+    type: {
+        type: String
+    },
     albumArt: {
         type: String
     }

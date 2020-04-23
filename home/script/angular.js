@@ -27,7 +27,7 @@ registerApp.controller('registerFormCtrl', ($scope, $http) => {
     if (registerUser()) {
       $http.post('/register_user', $scope.user)
         .then((response) => {
-          console.log("From register" + response);
+          console.log("From register" + JSON.stringify(response));
           if (response.data.status == 200) {
             sessionStorage.setItem("current-user", JSON.stringify(response.data.data))
             window.open("profile.html", "_self");
@@ -56,4 +56,25 @@ profileApp.controller('profileCtrl', ($scope, $http) => {
       console.log($scope.user.myCreation);
       
     })
-})
+});
+
+//register page module
+var createCollab = angular.module('startCollab', []);
+createCollab.controller('collabCtrl', ($scope, $http) => {
+  var user = JSON.parse(sessionStorage.getItem("current-user"));
+  $scope.createCollab = function () {
+    var genre = document.querySelector('input[name="genre"]:checked').value;
+    if (saveCollab()) {
+      console.log($scope.collab)
+      $scope.collab.genre = genre;
+      $scope.collab.author = user["_id"];
+      $http.post('/save_collab', $scope.collab)
+      .then((response) => {
+        if(response.data.status == 200){
+          window.alert(response.data.message);
+          window.open("profile.html", "_self");
+        }
+      })
+    }
+  }
+});

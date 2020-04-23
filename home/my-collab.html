@@ -11,10 +11,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
 
-<body>
+<body ng-app="startCollab">
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: black;">
         <a class="navbar-brand" href="index.html">
@@ -46,9 +47,8 @@
                         Collab</a>
                 </li>
                 <li class="nav-item dropdown" id="navbar-profile-img">
-                    <a class="btn dropdown-toggle" href="#" role="button" id="navDropDown" data-toggle="dropdown" >
-                        <img width="40px" height="40px" class="rounded-circle"
-                            src="images/dev_pic.jpg" alt="">
+                    <a class="btn dropdown-toggle" href="#" role="button" id="navDropDown" data-toggle="dropdown">
+                        <img width="40px" height="40px" class="rounded-circle" src="images/dev_pic.jpg" alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDropDown">
                         <a class="dropdown-item" href="profile.html">Profile</a>
@@ -71,18 +71,19 @@
         <div class="row">
             <div class="col">
                 <div class="col">
-                    <form class="needs-validation" id="login-form" action="#" novalidate>
+                    <form ng-controller="collabCtrl" class="needs-validation" id="create-collab-form" action="#"
+                        novalidate>
                         <div class="form-row mt-5" style="max-width: 50%;">
                             <div class="col">
                                 <input type="text" class="form-control" id="myTitle" placeholder="Enter a title"
-                                    autocomplete="off" required>
+                                    autocomplete="off" ng-model="collab.title" required>
+                                <div class="invalid-feedback">Title cannot be empty</div>
 
                             </div>
                         </div>
                         <div class="form-row mt-5" style="max-width: 50%;">
                             <div class="col">
-                                <input type="text" class="form-control" id="myDesc" placeholder="Enter a description"
-                                    required>
+                                <input type="text" class="form-control" id="myDesc" placeholder="Enter a description" ng-model="collab.desc">
                             </div>
                         </div>
                         <div class="form-row mt-5" style="max-width: 50%;">
@@ -90,16 +91,17 @@
                                 <label for="genre">Choose a Genre</label><br>
                                 <div class="btn-group btn-group-toggle" id="genre" data-toggle="buttons">
                                     <label class="btn mx-3 active">
-                                        <input type="radio" name="genre" id="rock" autocomplete="off" value="rock" checked>Rock
+                                        <input type="radio" name="genre" id="rock" ng-model="collab.genre" value="Rock"
+                                            checked>Rock
                                     </label>
                                     <label class="btn mx-3">
-                                        <input type="radio" name="genre" id="blues" value="rock" autocomplete="off">Blues
+                                        <input type="radio" name="genre" id="blues" ng-model="collab.genre" value="Blues">Blues
                                     </label>
                                     <label class="btn mx-3">
-                                        <input type="radio" name="genre" id="jazz" value="rock" autocomplete="off">Jazz
+                                        <input type="radio" name="genre" id="jazz"  ng-model="collab.genre" value="Jazz">Jazz
                                     </label>
                                     <label class="btn mx-3">
-                                        <input type="radio" name="genre" id="pop" value="rock" autocomplete="off">Pop
+                                        <input type="radio" name="genre" id="pop" ng-model="collab.genre" value="Pop">Pop
                                     </label>
                                 </div>
                             </div>
@@ -108,20 +110,22 @@
                             <div class="col">
                                 <label for="radioCollab">Collaboration Type</label><br>
                                 <div class="form-check form-check-inline" id="radioCollab">
-                                    <input class="form-check-input" type="radio" name="CollabType" id="radioPrivate" value="Private" checked>
+                                    <input class="form-check-input" type="radio" name="CollabType" id="radioPrivate"
+                                    ng-model="collab.type" value="Private" checked>
                                     <label class="form-check-label" for="radioPrivate">
-                                      Private
+                                        Private
                                     </label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="CollabType" id="radioPublic" value="Public">
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="CollabType" id="radioPublic"
+                                    ng-model="collab.type" value="Public">
                                     <label class="form-check-label" for="radioPublic">
-                                      Public
+                                        Public
                                     </label>
-                                  </div>
+                                </div>
                             </div>
                         </div>
-                        <button class="btn mt-5 text-white" type="button" onclick="saveCollab()"
+                        <button class="btn mt-5 text-white" type="button" ng-click="createCollab()"
                             style="min-width: 200px; background-color: orange;">Save</button>
                     </form>
 
@@ -152,6 +156,7 @@
         </div>
     </footer>
     <script src="script/script.js"></script>
+    <script src="script/angular.js"></script>
 </body>
 
 </html>
