@@ -11,6 +11,9 @@ var Collab = new CollabSchema({
        type: CollabSchema.Types.ObjectId,
        ref: 'UserProfile' 
     },
+    genre: {
+        type: String
+    },
     albumArt: {
         type: String
     }

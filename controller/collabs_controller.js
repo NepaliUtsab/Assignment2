@@ -26,6 +26,31 @@ export const getCollabs = (req, res) => {
     // })
 }
 
+export const getCollabsByGenre = (req, res) => {
+    let responseBody = responseFormat;
+
+    collabs.find({genre: req.body.genre})
+    .populate('author')
+    .exec((err, collab) => {
+        if(err || collab == null){
+            console.log(req.body)
+            responseBody.status = 201;
+            responseBody.message = "No Collabs found";
+            responseBody.data = "";
+            res.json(responseBody);
+        }else{
+            console.log(collab);
+            responseBody.message = "Collabs retrieved successfully";
+            responseBody.data = collab;
+            res.json(responseBody);
+        }
+    })
+    // userModel.findOne({email: req.body.email}, (err, user) => {
+        
+    // })
+}
+
+
 export const saveCollab = (req, res) => {
     let responseBody = responseFormat;
     let new_collab = new collabs(req.body);

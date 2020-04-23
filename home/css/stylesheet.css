@@ -15,6 +15,11 @@ body{
     color: orange !important;
 }
 
+.dropdown-menu > .dropdown-item{
+    color: black !important;
+}
+
+
 footer{
     background-color: black !important;
 }

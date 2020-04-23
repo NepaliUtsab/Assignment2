@@ -176,6 +176,12 @@ function showSavedUserNav() {
 
 }
 
+function logout(){
+  window.alert("Are you sure you want to logout?");
+  sessionStorage.setItem("current-user", "");
+  window.open(`index.html`, '_self');
+}
+
 function getRecommended(pills_id) {
   var code = "";
   var titleTempArray = ["Popular", "Rock Genre", "Recently Added"];

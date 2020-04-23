@@ -1,4 +1,5 @@
 import userModel from '../model/userModel'
+import collabs from '../model/collabs'
 import { responseFormat } from '../model/response/response_format'
 
 export const loginUser = (req, res) => {
@@ -23,22 +24,35 @@ export const loginUser = (req, res) => {
 
 export const getUser = (req, res) => {
     var responseBody = responseFormat;
-    userModel.find({}, (err, user) => {
-        if (user.length == 0) {
+    console.log(req.query);
+    userModel.findOne({email: req.query.email})
+    .populate({
+        path: 'collabs',
+        model: collabs,
+        populate: {
+            path: 'author',
+            model: userModel,
+            select: 'email firstName lastName'
+        }
+    })
+    .exec((err, user) => {
+        if(err || user == null){
+            console.log(req.body)
             responseBody.status = 201;
-            responseBody.message = "No User Found";
+            responseBody.message = "No User found";
+            responseBody.data = "";
             res.json(responseBody);
-        } else {
-            responseBody.status = 200;
-            responseBody.message = "Users found";
-            responseBody.data = user
+        }else{
+            console.log(user);
+            responseBody.message = "Collabs retrieved successfully";
+            responseBody.data = user;
             res.json(responseBody);
         }
     })
 }
 
 export const registerUser = (req, res) => {
-    let newUser = userModel(req.body)
+    let newUser = userModel(req)
     var responseBody = responseFormat;
     userModel.findOne({ email: newUser.email }, (err, user) => {
         if (err) {

@@ -11,10 +11,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
 
-<body>
+<body ng-app="profilePage" ng-controller="profileCtrl">
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: black;">
         <a class="navbar-brand" href="index.html">
@@ -27,7 +28,7 @@
 
         <div class="collapse navbar-collapse" id="NavigationBar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="about.html">About Us</a>
                 </li>
                 <li class="nav-item">
@@ -50,8 +51,8 @@
                             src="images/dev_pic.jpg" alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDropDown">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                        <a class="dropdown-item" href="profile.html">Profile</a>
+                        <a class="dropdown-item" onclick="logout()">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -65,11 +66,11 @@
                 <img src="images/dev_pic.jpg" alt="" style="max-height: 400px;">
             </div>
             <div class="col my-auto text-lg-left text-center">
-                <h5>Name: Utsab Malakar</h5>
-                <h5>Address: 432 Catherine Street, Ontario, Canada</h5>
-                <h5>Email: utsabmalakar57@gmail.com</h5>
-                <h5>Account Type: Pro Account</h5>
-                <h5>Total Collabs: 15</h5>
+                <h5>Name: {{user.firstName}} {{user.lastName}}</h5>
+                <h5>Address: {{user.address}}</h5>
+                <h5>Email: {{user.email}}</h5>
+                <h5>Account Type: {{user.account}}</h5>
+                <h5>Total Collabs: {{user.collabCount}}</h5>
             </div>
         </div>
     </div>
@@ -83,49 +84,23 @@
     </div>
 
     <!-- Explore cards -->
-    <div class="container mt-2">
+    <div class="container mt-2" ng-if="user.myCreation.length != 0">
         <div class="row">
-            <div class="col-md-3 my-1">
+            <div class="col-md-3 my-2" ng-repeat="collab in user.myCreation">
                 <div class="card">
                     <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Title : Song title 1</h5>
-                        <h5 class="card-title">Aurthor : Utsab Malakar</h5>
-                        <h5 class="card-title">Genre : Rock</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 my-2">
-                <div class="card">
-                    <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Title : Song title 1</h5>
-                        <h5 class="card-title">Aurthor : Utsab Malakar</h5>
-                        <h5 class="card-title">Genre : Rock</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 my-2">
-                <div class="card">
-                    <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Title : Song title 1</h5>
-                        <h5 class="card-title">Aurthor : Utsab Malakar</h5>
-                        <h5 class="card-title">Genre : Rock</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 my-2">
-                <div class="card">
-                    <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Title : Song title 1</h5>
-                        <h5 class="card-title">Aurthor : Utsab Malakar</h5>
+                        <h5 class="card-title">Title : {{collab.title}}</h5>
+                        <h5 class="card-title">Aurthor : {{collab.author.firstName}}</h5>
                         <h5 class="card-title">Genre : Rock</h5>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container mt-2" ng-if="user.myCreation.length == 0">
+        <p>You dont have created any collabs yet.</p><br>
+        <a class="btn" style="background-color: orange; color: white;" href="my-collab.html">Start New Collab</a>
     </div>
 
     <!-- My Collaborations -->
@@ -202,6 +177,7 @@
         </div>
     </footer>
     <script src="script/script.js"></script>
+    <script src="script/angular.js"></script>
 </body>
 
 </html>

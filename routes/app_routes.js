@@ -6,7 +6,8 @@ import {
 
 import {
     getCollabs,
-    saveCollab
+    saveCollab,
+    getCollabsByGenre
 } from '../controller/collabs_controller'
 
 const route = (app) => {
@@ -25,6 +26,9 @@ const route = (app) => {
 
     app.route('/get_collab')
     .get(getCollabs)
+
+    app.route('/get_collab_genre')
+    .get(getCollabsByGenre)
     
 }
 
