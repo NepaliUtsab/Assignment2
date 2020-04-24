@@ -7,7 +7,8 @@ import {
 import {
     getCollabs,
     saveCollab,
-    getCollabsByGenre
+    getCollabsByGenre,
+    getAllCollabs
 } from '../controller/collabs_controller'
 
 const route = (app) => {
@@ -29,6 +30,9 @@ const route = (app) => {
 
     app.route('/get_collab_genre')
     .get(getCollabsByGenre)
+
+    app.route('/get_all_collabs')
+    .get(getAllCollabs)
     
 }
 

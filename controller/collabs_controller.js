@@ -50,6 +50,30 @@ export const getCollabsByGenre = (req, res) => {
     // })
 }
 
+export const getAllCollabs = (req, res) => {
+    let responseBody = responseFormat;
+
+    collabs.find()
+    .populate('author')
+    .exec((err, collab) => {
+        if(err || collab == null){
+            console.log(req.body)
+            responseBody.status = 201;
+            responseBody.message = "No Collabs found";
+            responseBody.data = "";
+            res.json(responseBody);
+        }else{
+            console.log(collab);
+            responseBody.message = "Collabs retrieved successfully";
+            responseBody.data = collab;
+            res.json(responseBody);
+        }
+    })
+    // userModel.findOne({email: req.body.email}, (err, user) => {
+        
+    // })
+}
+
 
 export const saveCollab = (req, res) => {
     let responseBody = responseFormat;

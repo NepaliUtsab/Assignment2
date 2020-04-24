@@ -183,32 +183,32 @@ function logout(){
 }
 
 function getRecommended(pills_id) {
-  var code = "";
-  var titleTempArray = ["Popular", "Rock Genre", "Recently Added"];
+  // var code = "";
+  // var titleTempArray = ["Popular", "Rock Genre", "Recently Added"];
 
-  for (var i = 0; i < 3; i++) {
-    code += `<div class="container-fluid text-white div-title py-2" style="background-color: black;">
-              <div class="container my-2">
-                    <h4>${titleTempArray[Math.floor(Math.random() * 3)]}</h4>
-              </div>
-              </div>
-              <div class="container mt-2">
-              <div class="row">`
-    for (var j = 0; j < 4; j++) {
-      code += `<div class="col-md-3 my-1">
-                  <div class="card">
-                      <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
-                      <div class="card-body">
-                          <h5 class="card-title">Title : Song title 1</h5>
-                          <h5 class="card-title">Aurthor : Utsab Malakar</h5>
-                          <h5 class="card-title">Genre : Rock</h5>
-                      </div>
-                  </div>
-              </div>`;
-    }
-    code += `</div></div>`
-  }
-  document.querySelector(`#${pills_id}`).innerHTML = code;
+  // for (var i = 0; i < 3; i++) {
+  //   code += `<div class="container-fluid text-white div-title py-2" style="background-color: black;">
+  //             <div class="container my-2">
+  //                   <h4>${titleTempArray[Math.floor(Math.random() * 3)]}</h4>
+  //             </div>
+  //             </div>
+  //             <div class="container mt-2">
+  //             <div class="row">`
+  //   for (var j = 0; j < 4; j++) {
+  //     code += `<div class="col-md-3 my-1">
+  //                 <div class="card">
+  //                     <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
+  //                     <div class="card-body">
+  //                         <h5 class="card-title">Title : Song title 1</h5>
+  //                         <h5 class="card-title">Aurthor : Utsab Malakar</h5>
+  //                         <h5 class="card-title">Genre : Rock</h5>
+  //                     </div>
+  //                 </div>
+  //             </div>`;
+  //   }
+  //   code += `</div></div>`
+  // }
+  // document.querySelector(`#${pills_id}`).innerHTML = code;
 }
 
 //Save my collab

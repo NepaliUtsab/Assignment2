@@ -11,10 +11,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
 
-<body onload="getRecommended('pills-recommended')">
+<body ng-app="collab-explore" ng-controller="exploreCtrl">
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: black;">
         <a class="navbar-brand" href="index.html">
@@ -49,9 +50,8 @@
                         Collab</a>
                 </li>
                 <li class="nav-item d-none dropdown" id="navbar-profile-img">
-                    <a class="btn dropdown-toggle" href="#" role="button" id="navDropDown" data-toggle="dropdown" >
-                        <img width="40px" height="40px" class="rounded-circle"
-                            src="images/dev_pic.jpg" alt="">
+                    <a class="btn dropdown-toggle" href="#" role="button" id="navDropDown" data-toggle="dropdown">
+                        <img width="40px" height="40px" class="rounded-circle" src="images/dev_pic.jpg" alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDropDown">
                         <a class="dropdown-item" href="profile.html">Profile</a>
@@ -68,24 +68,142 @@
             <li class="nav-item">
                 <a class="nav-link active" id="pills-recommended-tab" data-toggle="pill" href="#pills-recommended"
                     role="tab" aria-controls="pills-home" aria-selected="true"
-                    onclick="getRecommended('pills-recommended')">Home</a>
+                    onclick="getRecommended('pills-recommended')">Recommended</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="pills-genre-tab" data-toggle="pill" href="#pills-genre" role="tab"
                     aria-controls="pills-profile" aria-selected="false"
-                    onclick="getRecommended('pills-genre')">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-new-tab" data-toggle="pill" href="#pills-new" role="tab"
-                    aria-controls="pills-contact" aria-selected="false"
-                    onclick="getRecommended('pills-new')">Contact</a>
+                    onclick="getRecommended('pills-genre')">Genre</a>
             </li>
         </ul>
+
+        
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-recommended" role="tabpanel"
-                aria-labelledby="pills-home-tab"></div>
-            <div class="tab-pane fade" id="pills-genre" role="tabpanel" aria-labelledby="pills-profile-tab"></div>
-            <div class="tab-pane fade" id="pills-new" role="tabpanel" aria-labelledby="pills-contact-tab"></div>
+                aria-labelledby="pills-home-tab">
+
+                <!-- Recomended tab -->
+                <div class="container-fluid text-white div-title py-2" style="background-color: black;">
+                    <div class="container my-2">
+                        <h4>Most Popular</h4>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col-md-3 my-2" ng-repeat="collab in popularCollabs track by $index">
+                            <div class="card">
+                                <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title : {{collab.title}}</h5>
+                                    <h5 class="card-title">Aurthor : {{collab.author.firstName}}</h5>
+                                    <h5 class="card-title">Genre : {{collab.genre}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid text-white div-title py-2" style="background-color: black;">
+                    <div class="container my-2">
+                        <h4>Recommended</h4>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col-md-3 my-2" ng-repeat="collab in genreCollabs track by $index">
+                            <div class="card">
+                                <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title : {{collab.title}}</h5>
+                                    <h5 class="card-title">Aurthor : {{collab.author.firstName}}</h5>
+                                    <h5 class="card-title">Genre : {{collab.genre}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid text-white div-title py-2" style="background-color: black;">
+                    <div class="container my-2">
+                        <h4>Recently Created</h4>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col-md-3 my-2" ng-repeat="collab in recommendedCollabs track by $index">
+                            <div class="card">
+                                <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title : {{collab.title}}</h5>
+                                    <h5 class="card-title">Aurthor : {{collab.author.firstName}}</h5>
+                                    <h5 class="card-title">Genre : {{collab.genre}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popular Tab -->
+            <div class="tab-pane fade" id="pills-genre" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                <div class="container-fluid text-white div-title py-2" style="background-color: black;">
+                    <div class="container my-2">
+                        <h4>Rock</h4>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col-md-3 my-2" ng-repeat="collab in recommendedCollabs track by $index">
+                            <div class="card">
+                                <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title : {{collab.title}}</h5>
+                                    <h5 class="card-title">Aurthor : {{collab.author.firstName}}</h5>
+                                    <h5 class="card-title">Genre : {{collab.genre}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid text-white div-title py-2" style="background-color: black;">
+                    <div class="container my-2">
+                        <h4>Blues</h4>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col-md-3 my-2" ng-repeat="collab in popularCollabs track by $index">
+                            <div class="card">
+                                <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title : {{collab.title}}</h5>
+                                    <h5 class="card-title">Aurthor : {{collab.author.firstName}}</h5>
+                                    <h5 class="card-title">Genre : {{collab.genre}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid text-white div-title py-2" style="background-color: black;">
+                    <div class="container my-2">
+                        <h4>Jazz</h4>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col-md-3 my-2" ng-repeat="collab in genreCollabs track by $index">
+                            <div class="card">
+                                <img class="card-img-top" src="images/akbum_art.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title : {{collab.title}}</h5>
+                                    <h5 class="card-title">Aurthor : {{collab.author.firstName}}</h5>
+                                    <h5 class="card-title">Genre : {{collab.genre}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -109,6 +227,7 @@
         </div>
     </footer>
     <script src="script/script.js"></script>
+    <script src="script/angular.js"></script>
 </body>
 
 </html>
